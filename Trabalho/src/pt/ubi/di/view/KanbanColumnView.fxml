@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+
+<VBox fx:id="columnRoot" styleClass="kanban-column" prefWidth="300.0" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ubi.di.controller.KanbanColumnController">
+    <padding>
+        <Insets top="10.0" right="10.0" bottom="10.0" left="10.0" />
+    </padding>
+    <children>
+        <HBox alignment="CENTER" styleClass="column-header">
+            <Label fx:id="columnTitle" styleClass="column-title" text="Coluna" />
+        </HBox>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" styleClass="column-scroll" VBox.vgrow="ALWAYS">
+            <content>
+                <VBox fx:id="tasksContainer" spacing="10.0" styleClass="tasks-container" VBox.vgrow="ALWAYS" minHeight="400.0">
+                    <padding>
+                        <Insets top="10.0" right="5.0" bottom="10.0" left="5.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</VBox> 

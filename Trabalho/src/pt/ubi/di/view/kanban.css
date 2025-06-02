@@ -1,0 +1,384 @@
+.root {
+    -fx-font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f8f9fa;
+}
+
+* {
+    -kanban-primary: #3f51b5;
+    -kanban-primary-dark: #303f9f;
+    -kanban-primary-light: #c5cae9;
+    -kanban-accent: #ff4081;
+    -kanban-accent-light: #ff80ab;
+    -kanban-text-primary: #212121;
+    -kanban-text-secondary: #757575;
+    -kanban-divider: #e0e0e0;
+    -kanban-background: #f8f9fa;
+    -kanban-surface: #ffffff;
+    -kanban-error: #f44336;
+    -kanban-success: #4caf50;
+    -kanban-warning: #ffeb3b;
+    -kanban-info: #2196f3;
+
+    -kanban-todo: #e3f2fd;
+    -kanban-doing: #fff8e1;
+    -kanban-done: #e8f5e9;
+}
+
+.kanban-board {
+    -fx-background-color: -kanban-background;
+}
+
+.kanban-header {
+    -fx-background-color: -kanban-primary;
+    -fx-padding: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 3);
+    -fx-background-radius: 0 0 8px 8px;
+}
+
+.app-title {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.add-task-container {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-background-radius: 24px;
+    -fx-padding: 6px 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 1);
+}
+
+.add-task-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+}
+
+.add-task-button {
+    -fx-background-color: -kanban-accent;
+    -fx-background-radius: 50%;
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-max-width: 32px;
+    -fx-max-height: 32px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-padding: 0px;
+    -fx-content-display: center;
+    -fx-alignment: center;
+}
+
+.button-icon {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-alignment: center;
+    -fx-padding: 0px;
+}
+
+.add-task-button:hover {
+    -fx-background-color: -kanban-accent-light;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 8, 0, 0, 3);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-translate-y: -1px;
+}
+
+.add-task-button:pressed {
+    -fx-background-color: derive(-kanban-accent, -10%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-translate-y: 1px;
+}
+
+.responsive-container {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.columns-container {
+    -fx-alignment: center;
+    -fx-fill-height: true;
+    -fx-spacing: 20px;
+    -fx-padding: 20px;
+}
+
+.columns-container-vertical {
+    -fx-alignment: top-center;
+    -fx-fill-width: true;
+    -fx-spacing: 20px;
+    -fx-padding: 20px;
+    -fx-pref-width: 100%;
+}
+
+.kanban-column {
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 12, 0, 0, 2);
+    -fx-min-width: 320px;
+    -fx-pref-width: 320px;
+    -fx-max-width: 400px;
+    -fx-min-height: 300px;
+}
+
+.vertical-column {
+    -fx-pref-width: 100%;
+    -fx-max-width: 600px;
+    -fx-min-width: 300px;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 12, 0, 0, 2);
+    -fx-min-height: 400px;
+    -fx-max-height: 500px;
+}
+
+.kanban-column:nth-child(1),
+.vertical-column:nth-child(1) {
+    -fx-background-color: -kanban-todo;
+}
+
+.kanban-column:nth-child(2),
+.vertical-column:nth-child(2) {
+    -fx-background-color: -kanban-doing;
+}
+
+.kanban-column:nth-child(3),
+.vertical-column:nth-child(3) {
+    -fx-background-color: -kanban-done;
+}
+
+.column-header {
+    -fx-padding: 16px;
+    -fx-background-radius: 12px 12px 0 0;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: -kanban-divider;
+}
+
+.kanban-column:nth-child(1) .column-header,
+.vertical-column:nth-child(1) .column-header {
+    -fx-background-color: derive(-kanban-todo, -5%);
+}
+
+.kanban-column:nth-child(2) .column-header,
+.vertical-column:nth-child(2) .column-header {
+    -fx-background-color: derive(-kanban-doing, -5%);
+}
+
+.kanban-column:nth-child(3) .column-header,
+.vertical-column:nth-child(3) .column-header {
+    -fx-background-color: derive(-kanban-done, -5%);
+}
+
+.column-title {
+    -fx-text-fill: -kanban-text-primary;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+.column-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-fit-to-height: true;
+    -fx-fit-to-width: true;
+    -fx-min-height: 200px;
+    -fx-pref-height: 100%;
+    -fx-padding: 0;
+    -fx-vbar-policy: always;
+}
+
+.vertical-column .column-scroll {
+    -fx-min-height: 200px;
+    -fx-pref-height: 300px;
+    -fx-vbar-policy: always;
+}
+
+.column-scroll>.viewport {
+    -fx-background-color: transparent;
+}
+
+.column-scroll>.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12px;
+    -fx-opacity: 1;
+    -fx-background-opacity: 1;
+}
+
+.column-scroll>.scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-background-radius: 6px;
+    -fx-pref-width: 8px;
+    -fx-opacity: 1;
+}
+
+.column-scroll>.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.column-scroll>.scroll-bar:vertical .increment-button,
+.column-scroll>.scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 5px;
+    -fx-pref-height: 15px;
+}
+
+.column-scroll>.scroll-bar:vertical .increment-button>.increment-arrow,
+.column-scroll>.scroll-bar:vertical .decrement-button>.decrement-arrow {
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+}
+
+.kanban-scroll {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.kanban-scroll>.viewport {
+    -fx-background-color: transparent;
+}
+
+.tasks-container {
+    -fx-background-color: transparent;
+    -fx-fill-width: true;
+    -fx-padding: 10px 5px;
+    -fx-min-height: 200px;
+    -fx-pref-height: 2000px;
+    -fx-alignment: top-center;
+    -fx-spacing: 16px;
+}
+
+.vertical-column .tasks-container {
+    -fx-min-height: 200px;
+    -fx-pref-height: 2000px;
+}
+
+.drag-target {
+    -fx-background-color: rgba(33, 150, 243, 0.1);
+    -fx-background-radius: 8px;
+    -fx-border-color: rgba(33, 150, 243, 0.5);
+    -fx-border-radius: 8px;
+    -fx-border-width: 2px;
+    -fx-border-style: dashed;
+}
+
+.task-card {
+    -fx-background-color: -kanban-surface;
+    -fx-background-radius: 12px;
+    -fx-border-color: rgba(0, 0, 0, 0.05);
+    -fx-border-radius: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 8, 0, 0, 1);
+    -fx-max-width: 400px;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.task-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.18), 12, 0, 0, 3);
+    -fx-translate-y: -1px;
+}
+
+.task-header {
+    -fx-background-color: rgba(0, 0, 0, 0.02);
+    -fx-background-radius: 12px 12px 0 0;
+    -fx-cursor: move;
+    -fx-min-height: 30px;
+    -fx-border-color: transparent transparent rgba(0, 0, 0, 0.05) transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-alignment: center;
+}
+
+.delete-button {
+    -fx-background-color: rgba(244, 67, 54, 0.1);
+    -fx-background-radius: 50%;
+    -fx-text-fill: -kanban-error;
+    -fx-font-weight: bold;
+    -fx-min-width: 24px;
+    -fx-min-height: 24px;
+    -fx-max-width: 24px;
+    -fx-max-height: 24px;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-border-color: rgba(244, 67, 54, 0.2);
+    -fx-border-radius: 50%;
+    -fx-border-width: 1px;
+}
+
+.delete-button:hover {
+    -fx-background-color: -kanban-error;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(244, 67, 54, 0.3), 5, 0, 0, 1);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.delete-button:pressed {
+    -fx-background-color: derive(-kanban-error, -10%);
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+}
+
+.task-content {
+    -fx-background-color: transparent;
+}
+
+.drag-handle-icon {
+    -fx-text-fill: rgba(0, 0, 0, 0.4);
+    -fx-font-size: 16px;
+    -fx-cursor: move;
+}
+
+.drag-active {
+    -fx-background-color: rgba(0, 0, 0, 0.05);
+}
+
+.task-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: dashed;
+    -fx-focus-color: -kanban-accent;
+    -fx-faint-focus-color: transparent;
+    -fx-text-fill: -kanban-text-primary;
+    -fx-padding: 8px 4px;
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.4);
+}
+
+.task-title:focused {
+    -fx-border-color: -kanban-accent;
+    -fx-border-width: 0 0 2 0;
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.25);
+}
+
+.task-description {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-focus-color: -kanban-accent;
+    -fx-faint-focus-color: transparent;
+    -fx-text-fill: -kanban-text-secondary;
+    -fx-padding: 4px;
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.4);
+    -fx-highlight-fill: -kanban-accent-light;
+}
+
+.task-description:focused {
+    -fx-border-color: -kanban-accent;
+    -fx-border-width: 1 0 0 0;
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.25);
+}
+
+.kanban-column:nth-child(1) .task-card,
+.vertical-column:nth-child(1) .task-card {
+    -fx-border-color: derive(-kanban-todo, -15%);
+    -fx-border-width: 0 0 0 4px;
+}
+
+.kanban-column:nth-child(2) .task-card,
+.vertical-column:nth-child(2) .task-card {
+    -fx-border-color: derive(-kanban-doing, -15%);
+    -fx-border-width: 0 0 0 4px;
+}
+
+.kanban-column:nth-child(3) .task-card,
+.vertical-column:nth-child(3) .task-card {
+    -fx-border-color: derive(-kanban-done, -15%);
+    -fx-border-width: 0 0 0 4px;
+}

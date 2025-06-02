@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane id="BorderPane" prefHeight="700.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="pt.ubi.di.MainViewController" stylesheets="@view/kanban.css">
+    <center>
+        <fx:include source="view/KanbanView.fxml" BorderPane.alignment="CENTER" />
+    </center>
+</BorderPane>
