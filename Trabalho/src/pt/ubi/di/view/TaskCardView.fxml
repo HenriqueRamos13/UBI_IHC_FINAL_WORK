@@ -19,7 +19,8 @@
             </padding>
             <children>
                 <Label styleClass="drag-handle-icon" text="☰" />
-                <HBox HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT">
+                <HBox HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT" spacing="8">
+                    <Button fx:id="setTimeButton" styleClass="time-button" text="⏰" onAction="#handleSetTime" />
                     <Button fx:id="deleteButton" styleClass="delete-button" text="✕" onAction="#handleDeleteTask" />
                 </HBox>
             </children>
@@ -30,6 +31,7 @@
             </padding>
             <TextField fx:id="titleField" styleClass="task-title" promptText="Título da tarefa" />
             <TextArea fx:id="descriptionArea" styleClass="task-description" prefHeight="80.0" wrapText="true" promptText="Descrição da tarefa..." VBox.vgrow="ALWAYS" />
+            <Label fx:id="dueDateLabel" styleClass="due-date-label" managed="false" visible="false" />
         </VBox>
     </children>
 </VBox> 

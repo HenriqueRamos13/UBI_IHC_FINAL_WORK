@@ -1,0 +1,4 @@
+Nova Tarefa|Descrição da tarefa|DOING||false
+fffffff|aaaaaaa|TO_DO|2025-06-03T02:32:00|true
+Nova Tarefa|Descrição da tarefa|DONE||false
+Nova Tarefa|Descrição da tarefa|DONE||false
